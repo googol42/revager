@@ -24,7 +24,11 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
+import java.util.logging.Logger;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -63,6 +67,18 @@ import org.revager.tools.AppTools;
 import org.revager.tools.GUITools;
 
 public class FindingPanel extends JPanel {
+
+	public static final Logger logger = Logger.getLogger(FindingPanel.class.getName());
+
+	static {
+		Logger log = Logger.getLogger(FindingPanel.class.getName());
+		try {
+			Handler handler = new FileHandler("log.txt");
+			log.addHandler(handler);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	private static final long serialVersionUID = 1L;
 
@@ -673,6 +689,7 @@ public class FindingPanel extends JPanel {
 	}
 
 	private void setEditView() {
+		logger.severe("" + finding.getId() + ";"+ finding.hashCode() + ";" + finding.getSeverity());
 		type = Type.EDIT_VIEW;
 
 		this.setPreferredSize(EDIT_VIEW_SIZE);

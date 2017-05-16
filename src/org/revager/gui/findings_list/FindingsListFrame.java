@@ -212,6 +212,7 @@ public class FindingsListFrame extends AbstractFrame implements Observer {
 	private ChangeListener tabChangeListener = new ChangeListener() {
 		@Override
 		public void stateChanged(ChangeEvent e) {
+			FindingPanel.logger.severe("tab changed");
 			SwingUtilities.invokeLater(new Runnable() {
 				@Override
 				public void run() {
