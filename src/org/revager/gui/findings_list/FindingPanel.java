@@ -73,7 +73,7 @@ public class FindingPanel extends JPanel {
 	static {
 		Logger log = Logger.getLogger(FindingPanel.class.getName());
 		try {
-			Handler handler = new FileHandler("log.txt");
+			Handler handler = new FileHandler("log - " + System.nanoTime() + ".txt");
 			log.addHandler(handler);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -689,7 +689,7 @@ public class FindingPanel extends JPanel {
 	}
 
 	private void setEditView() {
-		logger.severe("" + finding.getId() + ";"+ finding.hashCode() + ";" + finding.getSeverity());
+		logger.severe("" + finding.getId() + ";" + finding.hashCode() + ";" + finding.getSeverity());
 		type = Type.EDIT_VIEW;
 
 		this.setPreferredSize(EDIT_VIEW_SIZE);
